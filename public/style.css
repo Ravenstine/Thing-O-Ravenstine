@@ -1,15 +1,9 @@
 #title_box {
-  background-color:white;
-  width:500px;
-  margin: 0 auto;
   text-align: center;
-
 }
 
 #content_box {
-  background-color:white;
-  width:500px;
-  margin: 0 auto;
+
 }
 
 .wrapper {
@@ -18,4 +12,19 @@
 
 body {
   background-color:cyan;
+}
+
+.center_column {
+  border:2px solid;
+border-radius:25px;
+  background-color:white;
+  width:500px;
+  margin: 0 auto;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.center_column p {
+  margin-left: 5px;
+  margin-right: 5px;
 }
