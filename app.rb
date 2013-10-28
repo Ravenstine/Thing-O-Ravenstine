@@ -1,16 +1,42 @@
-# app.rb
-
 require 'sinatra'
-require 'sinatra/activerecord'
-require './environments'
+require 'active_record'
+require_relative './app/models/spider.rb'
 
-
-# class Post < ActiveRecord::Base
-# end
+ActiveRecord::Base.establish_connection(adapter: 'postgresql')
 
 get '/' do
-  @title = "Today, we're going to talk about JUMPING SPIDERS!"
-  @body = "\nThere are more than 5,000 species of jumping spiders around the world.  Unlike most spiders, which act like trappers, jumping spiders are active hunters.  Because of this, they have evolved to have the best vision of all arthropods.\n Many jumping spiders have a complex(and dangerous) mating ritual.  The male must perform a dance which, if he doesn't get right, will cause the female to consume him on the spot! \nFrom my experience, jumping spiders make great pets.  Unlike tarantulas they are highly active."
-  erb :"index"
+  @title = "List of spiders!"
+  # @body = []
+  # Spider.all.each { |x| @body << x.name }.map {|x| x = "#{x}<br/>"}.to_s
+
+  @body = ''
+  Spider.all.each do |x|
+    @body += "#{x.name} <br/>"
+  end
+  erb :index
 end
 
+
+get '/add/:new_name' do
+  @title = "A new spider was born!"
+  # @body = []
+  # Spider.all.each { |x| @body << x.name }.map {|x| x = "#{x}<br/>"}.to_s
+  Spider.create!({:name => params[:new_name]})
+  @body = ''
+  Spider.all.each do |x|
+    @body += "#{x.name} <br/>"
+  end
+  erb :index
+end
+
+get '/smash/:spider_name' do
+  @title = "You smashed #{params[:spider_name]}, the spider!"
+  # @body = []
+  # Spider.all.each { |x| @body << x.name }.map {|x| x = "#{x}<br/>"}.to_s
+  Spider.create!({:name => params[:new_name]})
+  @body = ''
+  Spider.all.each do |x|
+    @body += "#{x.name} <br/>"
+  end
+  erb :index
+end
