@@ -1,0 +1,21 @@
+#title_box {
+  background-color:white;
+  width:500px;
+  margin: 0 auto;
+  text-align: center;
+
+}
+
+#content_box {
+  background-color:white;
+  width:500px;
+  margin: 0 auto;
+}
+
+.wrapper {
+  padding-top: 100px;
+}
+
+body {
+  background-color:cyan;
+}
